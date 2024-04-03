@@ -1,0 +1,84 @@
+<!-- 
+    Faça um programa que tenha uma senha e passe ela por parametro.
+    A senha deve conter ate 8 caracteres, incluindo pelo menos uma
+    letra minuscula, uma letra maiuscula e um caracter especial.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        s = "Cleusaa.";
+
+
+        function exibir (s)
+        {
+            var ex;
+            ex = pass (s);
+
+            if(ex == 1)
+                alert("Seja bem-vindo!");
+            else
+                resultado.value="A senha nao atinge os requisitos necessarios!";
+        }
+
+        function pass (s)
+        {
+            var caracter=['@','!','$','&','*','.'];
+            var letra_mai=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+            var letra_min=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+            var i, j;
+            var car=0, l_min=0, l_mai=0;
+
+            var frase=[];
+            frase=s;
+
+            if(frase.length <= 8)
+            {
+                for(i=0;i<frase.length;i++)
+                {
+                    for(j=0;j<caracter.length;j++)
+                    {
+                        if(frase[i] == caracter[j])
+                            car=1;
+                    }
+                    for(j=0;j<letra_mai.length;j++)
+                    {
+                        if(frase[i] == letra_mai[j])
+                            l_mai=1;
+                    }
+                    for(j=0;j<letra_min.length;j++)
+                    {
+                        if(frase[i] == letra_min[j])
+                            l_min=1;
+                    }
+                }
+            }
+            if(car>0 && l_mai>0 && l_min>0)
+                return 1;
+            else
+                return 0;
+        }
+    </script>
+</head>
+<body>
+
+    <style>
+        input
+        {
+            padding: 8px 50px 5px 5px;
+        }
+    </style>
+
+   <form>
+        <input type="button" value="Entrar" id="btn" onclick="exibir(s)"><br><br>
+
+        <input type="text" id="resultado" disabled>
+   </form>
+    
+</body>
+</html>
